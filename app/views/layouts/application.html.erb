@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= javascript_include_tag 'script', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+          <div id="logo" class="list-group-item">
+            <%= link_to root_path do %> 
+            <%= image_tag "logo.png", id:"logo-1" %>
+            <% end %>
+          </div>
+
+              <div class="list-group">
+                  <a href="#" class="list-group-item list-group-item-action bg-light " >website</a>
+                  <div class="list-group-item list-group-item-action bg-light "><%= link_to "Blog", root_path %></div>
+                  <a href="#" class="list-group-item list-group-item-action bg-light ">About</a>
+                  <a href="#" class="list-group-item list-group-item-action bg-light ">Social</a>
+                  <a href="https://twitter/mackenziechild" class="list-group-item list-group-item-action bg-light ">Twitter</a>
+                  <a href="#" class="list-group-item list-group-item-action bg-light ">Instagram</a>
+                  <a href="#" class="list-group-item list-group-item-action bg-light ">Github</a>
+                  <a href="#" class="list-group-item list-group-item-action bg-light ">Email</a>
+
+                  <p class="sign_in">Admin Login</p>
+               </div>
+        </div>
+        
+        <!-- /#sidebar-wrapper -->
+    
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          
+          <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">  
+            
+              <div class="btn hide" id="menu-toggle">Hide</div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                      
+                      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                        <div class="nav navbar-nav ml-auto auto">
+                            <%= link_to 'All Posts', posts_url, class: 'btn-1' %>
+                          <div class="btn btn-light border" id="btn"><%= link_to 'New Post', new_post_path, class: 'color' %></div>
+                          <div class="btn btn-light border" id="btn">Log Out</div>
+                        </div>
+                      </div>                                                                                                                     
+                    </nav>
+                    <%= yield %>
+
+                  </div> 
+            </div>
+
+                
+      
+
+      
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+
+  </body>
+</html>
