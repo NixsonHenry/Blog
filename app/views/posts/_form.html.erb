@@ -1,0 +1,24 @@
+     <%= form_for @post do |f| %>
+        <% if @post.errors.any? %>
+            <div class="errors">
+                <h2><%= pluralize(@post.errors.count, "error") %> prevented this post from saving</h2>
+                <ul>
+                    <% @post.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <p>
+            <%= f.label :title %> <br>
+            <%= f.text_field :title, class: 'form-control w-85' %>
+        </p>
+        <p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+            <%= f.label :body %> <br>
+            <%= f.text_area :body, class: 'form-control w-85', rows: 7 %>
+        </p>
+        <p>
+            <%= f.submit class: 'btn btn-light round' %>
+        </p>
+    <% end %>
+    
