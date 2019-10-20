@@ -1,7 +1,31 @@
-<div class="comment clearfix">
-    <div class="comment_content">
-        <p class="comment_name"><strong><%= comment.name %></strong></p>
-        <p class="comment_body"><%= comment.body %></p>
+
+<div class="comment clearfix ">
+    <div class="comment_content color_1 pull">
+        <p class="comment_name"><strong><%= comment.name %></strong></p> <hr>
+    
+        <div>
+            <% if comment.body.length > 150 %>
+              <%= truncate(comment.body, length: 250) %>
+              <%= link_to '...Read more', '', class: "read-more-#{comment.id}" %>
+              <script>
+                $('.read-more-<%= comment.id %>').on('click', function(e) {
+                  e.preventDefault()
+                  $(this).parent().html('<%= escape_javascript comment.body %>')
+                })
+              </script>
+            <% else %>
+              <%= comment.body %>
+            <% end %>
+          <div>
+              
         <p class="comment_time"><%= time_ago_in_words(comment.created_at) %> Ago</p>
-    </div>
+    </div> 
+    
+    <% if user_signed_in? %> 
+    <p><%= link_to 'Delete', [comment.post, comment],
+                    method: :delete,
+                    class: "btn btn-danger",
+                    data: {confirm: 'Are you sure'} %> </p>
+    <% end %>
+    <hr class="color_1 pull pt-5">
 </div>

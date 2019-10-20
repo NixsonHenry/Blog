@@ -1,25 +1,40 @@
-<div class="post_wrapper mt-5 ml-4">
+<!-- 2nd push -->
+<div class="row marg-left-2">
+    <div class="col-md-12">
     <h1 class="title">
         <%= @post.title %>
     </h1>
-    
-    <p class="date">
-        Submitted <%= time_ago_in_words(@post.created_at) %> Ago
-        <%= link_to 'Edit', edit_post_path(@post) %>
-        <%= link_to 'Delete', post_path(@post), method: :delete, data: {
-            confirm: 'Are you sure?'
-        } %>
-    </p>
-    
-    <p class="body">
-        <%= @post.body %>
-    </p>
+    </div>
 
-    <div id="comments">
-        <h2><%= @post.comments.count %> Comments</h2>
+    <div class="d-flex">
+        <p class="col-md-4 date color_1">
+            Submitted <%= time_ago_in_words(@post.created_at) %> Ago
+        </p>
+        <p class="col-md-8 date color_1">
+            <% if user_signed_in? %>
+       <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-info edit ' %>
+       <%= link_to 'Delete', post_path(@post), method: :delete, data: {
+       confirm: 'Are you sure?'}, class: 'btn btn-danger delete' %>
+   <% end %>
+        </p>
+    </div>
+       
+    <div class="col-md-12">
+        <p class="body pull">
+            <%= @post.body %>
+        </p>
+    </div>
+
+   <div class="col-md-12">
+        <hr class="color_1 pull">
+   </div>
+
+    <div class="col-md-12" id="comments">
+        <h2 ><%= @post.comments.count %> Comments</h2>
         <%= render @post.comments %>
 
         <h3>Add a comment</h3>
         <%= render "comments/form" %>
     </div>
+</div>
 </div>

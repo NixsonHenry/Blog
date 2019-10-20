@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'script', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
@@ -21,46 +22,71 @@
           </div>
 
               <div class="list-group">
-                  <a href="#" class="list-group-item list-group-item-action bg-light " >website</a>
+                  <a href="#" class="list-group-item list-group-item-action bg-light">website</a>
                   <div class="list-group-item list-group-item-action bg-light "><%= link_to "Blog", root_path %></div>
-                  <a href="#" class="list-group-item list-group-item-action bg-light ">About</a>
+                  <div class="list-group-item list-group-item-action bg-light "><%= link_to "About", about_path %></div>
                   <a href="#" class="list-group-item list-group-item-action bg-light ">Social</a>
                   <a href="https://twitter/mackenziechild" class="list-group-item list-group-item-action bg-light ">Twitter</a>
                   <a href="#" class="list-group-item list-group-item-action bg-light ">Instagram</a>
                   <a href="#" class="list-group-item list-group-item-action bg-light ">Github</a>
                   <a href="#" class="list-group-item list-group-item-action bg-light ">Email</a>
 
+              <% if !user_signed_in? %>
                   <p class="sign_in">Admin Login</p>
+              <% end %>
+
                </div>
         </div>
         
         <!-- /#sidebar-wrapper -->
-    
+    <!-- Page Content -->
+        
+         
         <!-- Page Content -->
         <div id="page-content-wrapper">
           
           <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">  
             
-              <div class="btn hide" id="menu-toggle">Hide</div>
+              <div class="btn hide color_1" id="menu-toggle">Hide</div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
                       <span class="navbar-toggler-icon"></span>
                     </button>
                       
                       <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                        <div class="nav navbar-nav ml-auto auto">
-                            <%= link_to 'All Posts', posts_url, class: 'btn-1' %>
-                          <div class="btn btn-light border" id="btn"><%= link_to 'New Post', new_post_path, class: 'color' %></div>
-                          <div class="btn btn-light border" id="btn">Log Out</div>
+                        <div class="nav navbar-nav ml-auto ">
+                         <div class="mr_1 btn-1">
+                            <% if current_page?(root_path) %>
+                            <%= link_to 'All Posts', posts_url, class: 'color_1' %>
+                        <% elsif current_page?(about_path) %>
+                            <%= link_to "About", about_path, class: 'color_1' %>
+                        <% else %>
+                            <%= link_to "Back to All Posts", root_path, class: 'color_1'%>
+                        <% end %>
+                         </div>
+
+                        <% if user_signed_in? %>
+                          <div class="btn log"><%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'logout' %></div>
+                        <% else %>
+                        
+                        <div class="dropdown mr_2">  
+                          <div class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown">
+                              <i class="fa fa-user"></i></div>
+                              <ul class="dropdown-menu pull-right" id="dropdown-box">
+                                <li class="dropdown-item pull-right" ><%= link_to 'Sign Up', new_user_registration_path, class: 'color_1' %></li>
+                                
+                                <li class="dropdown-item pull-right" ><%= link_to 'Sign In', new_user_session_path, class: 'color_1' %></li>
+                              </ul>
+                          </div>
+                          <% end %>
                         </div>
                       </div>                                                                                                                     
                     </nav>
-                    <%= yield %>
-
+                    <% flash.each do |name, msg| %>
+                    <%= content_tag(:div, msg, class: 'alert') %>
+                  <% end %>
+                   <%= yield %>
                   </div> 
             </div>
-
-                
-      
 
       
       <script src="vendor/jquery/jquery.min.js"></script>

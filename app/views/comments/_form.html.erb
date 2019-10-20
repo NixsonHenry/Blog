@@ -1,14 +1,14 @@
 <%= form_for([@post, @post.comments.build]) do |f| %>
     <p>
-        <%= f.label :name %> <br>
-        <%= f.text_field :name %>
+        <%= f.label :name, class: "field-1" %> <br>
+        <%= f.text_field :name, class: 'marg-2' %>
     </p>
     <p>
-        <%= f.label :body %> <br>
-        <%= f.text_area :body %>
+        <%= f.label :body, class: "field-1" %> <br>
+        <%= f.text_area :body, class: 'marg-3', rows: 7 %>
     </p>
     <br>
     <p>
-        <%= f.submit %>
+        <%= f.submit class: 'btn btn-info btn-bottom' %>
     </p>
 <% end %>

@@ -1,0 +1,85 @@
+<div class="row"> 
+    <div class="col-md-12"><p class="name">Nixson's Blog</p><hr class="color_3"></div> 
+
+
+<div class="col-md-10 border marg-left">
+    <div class="row">
+       <div class="col-md-12 ml-5">
+         <div class="container row">
+            <div class="col-md-12">
+                <h3 class="mt-5 mb-5">Log in to your account</h3>
+                <h5 class="ml-2 mb-4">Come join our community! Manage your info & activities. Already have one? <a href="http://localhost:3000/users/sign_up">Sign Up here.</a></h5>
+            </div>
+         </div>
+         
+    <div class="container row d-flex">
+        <div class="col-md-4">
+            <p class="ml-2">Why not be open-minded? <br>Visit Us on:</p>
+        <div class="container ml-2">
+          <div class="row">
+            <div class="col-*-*">
+              <a href="#"><i class="fa fa-facebook btn info" style="font-size:24px;width: 10px; padding-right: 25px"></i></a>
+            </div>
+            <div class="col-*-*"><a href="#" class="btn info" style="position: relative ; right:14px">facebook</a></div>
+          </div>
+          </div>
+        <div class="container ml-2 mt-3">
+          <div class="row">
+            <div class="col-*-*">
+              <a href="#"><i class="fa fa-glide-g btn btn-danger" style="font-size:24px;width: 10px; padding-right: 25px "></i></a>
+            </div>
+            <div class="col-*-*"><a href="#" class="btn btn-danger" style="position: relative; right:14px;">goggle</a></div>
+          </div>
+        </div>     
+    </div>
+  
+    <div class="row">
+        <div class="col vl">
+        </div>
+    </div>
+    
+    
+    
+    <div class="col-md-8 ">
+     
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <div class="field">
+          <!-- <%#= f.label :email %><br /> -->
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: 'form-control col-md-7 ml-5' %>
+        </div>
+      <br>
+        <div class="field">
+          <!-- <%#= f.label :password %><br /> -->
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "Your Password", class: 'form-control col-md-7 ml-5' %> <br>
+        </div>
+        <br>
+        <% if devise_mapping.rememberable? %>
+        <div class="field form-control col-md-7 ml-5 col-md-3 sign-2">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>  
+      <% end %>
+      <br>
+
+      <div class="ml-5 top-2">
+          Submit this form to access the Blog & <a href="#">The terms of Service.</a>
+        </div> <br>
+
+      <div class="actions">
+          <%= f.submit "Connect!", class: 'ml-5 btn connect' %>
+          <% end %>
+        </div>
+      
+      <br>
+    
+      </div>
+    </div>
+
+
+    </div>
+       </div>
+    </div>
+  </div>
+  <br><br><br><br>
+

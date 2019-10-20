@@ -1,0 +1,82 @@
+<div class="row"> 
+    <div class="col-md-12"><p class="name">Nixson's Blog</p><hr class="color_3"></div> 
+
+
+<div class="col-md-10 border marg-left">
+    <div class="row">
+       <div class="col-md-12 ml-5">
+         <div class="container row">
+            <div class="col-md-12">
+                <h3 class="mt-5 mb-5">Create a New Account</h3>
+                <h5 class="ml-2 mb-4">Come join our community! Let's set up your account. Already have one? <a href="http://localhost:3000/users/sign_in#">Sign in here.</a></h5>
+            </div>
+         </div>
+    <div class="container row d-flex">
+        <div class="col-md-4">
+            <p class="ml-2">Why be old fashioned? <br> Just sign in with:</p>
+        <div class="container ml-2">
+          <div class="row">
+            <div class="col-*-*">
+              <a href="#"><i class="fa fa-facebook btn info" style="font-size:24px;width: 10px; padding-right: 25px"></i></a>
+            </div>
+            <div class="col-*-*"><a href="#" class="btn info" style="position: relative ; right:14px">facebook</a></div>
+          </div>
+          </div>
+        <div class="container ml-2 mt-3">
+          <div class="row">
+            <div class="col-*-*">
+              <a href="#"><i class="fa fa-glide-g btn btn-danger" style="font-size:24px;width: 10px; padding-right: 25px "></i></a>
+            </div>
+            <div class="col-*-*"><a href="#" class="btn btn-danger" style="position: relative; right:14px;">goggle</a></div>
+          </div>
+        </div>     
+    </div>
+  
+    <div class="row">
+        <div class="col vl">
+        </div>
+    </div>
+    
+    
+  
+    <div class="col-md-8 ">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+  
+      <div class="field">
+        <!-- <%#= f.label :email, class: 'ml-5' %><br/> -->
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: 'form-control col-md-10 ml-5' %>
+      </div>
+              
+      <div class="field">
+        <%#= f.label :password, class: 'ml-5' %>
+        <% if @minimum_password_length %>
+        <!-- <em>(<%#= @minimum_password_length %> characters minimum)</em> -->
+        <% end %><br/>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password (6 characters minimum)", class: 'form-control col-md-10 ml-5' %> <br>
+      </div>
+              
+      <div class="field">
+        <!-- <%#= f.label :password_confirmation, class: 'ml-5' %><br /> -->
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password confirmation", class: 'form-control col-md-10 ml-5' %>
+      </div> <br>
+          <div class="ml-5 top">
+            By submitting this form you agree to Blog's <a href="#">Terms of Service.</a>
+          </div> <br>
+      <div class="actions">
+        <%= f.submit "Join Blog !", class: 'ml-5 btn signup' %>
+        <% end %>
+      </div> 
+  
+        <div class="form-control col-md-3 sign">
+          <%= render "devise/shared/links" %>
+        </div>
+    
+      </div>
+
+    </div>
+    </div>
+       </div>
+    </div>
+  </div>
+  <br><br><br><br>
